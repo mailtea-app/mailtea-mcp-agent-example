@@ -1,0 +1,21 @@
+{
+  "name": "mailtea-mcp-agent-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Give an AI agent the ability to send email: Claude plus the Mailtea MCP server.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20.6"
+  },
+  "scripts": {
+    "start": "node agent.mjs",
+    "tools": "node agent.mjs --list-tools",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.120.0",
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "mailtea-mcp": "0.11.2"
+  }
+}

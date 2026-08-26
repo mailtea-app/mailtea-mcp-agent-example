@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "mailtea": {
+      "command": "npx",
+      "args": ["-y", "mailtea-mcp"],
+      "env": {
+        "MAILTEA_API_TOKEN": "mt_pat_REPLACE_WITH_YOUR_KEY"
+      }
+    }
+  }
+}

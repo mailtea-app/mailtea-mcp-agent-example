@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "id": "mailtea-api-token",
+      "type": "promptString",
+      "description": "Mailtea API key (mt_pat_… or mt_svc_…)",
+      "password": true
+    }
+  ],
+  "servers": {
+    "mailtea": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "mailtea-mcp"],
+      "env": {
+        "MAILTEA_API_TOKEN": "${input:mailtea-api-token}"
+      }
+    }
+  }
+}
