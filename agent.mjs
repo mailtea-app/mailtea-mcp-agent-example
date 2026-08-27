@@ -127,7 +127,7 @@ async function main() {
   const instruction = argv.join(" ").trim();
   if (!instruction) {
     console.error(
-      'Usage: node agent.mjs "email dave@example.com a one-line summary of today\'s signups"'
+      'Usage: node agent.mjs "email you@yourdomain.com a one-line summary of today\'s signups"'
     );
     process.exitCode = 1;
     return;
