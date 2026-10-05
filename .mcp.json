@@ -4,8 +4,7 @@
       "command": "npx",
       "args": ["-y", "mailtea-mcp"],
       "env": {
-        "MAILTEA_API_TOKEN": "${MAILTEA_API_TOKEN}",
-        "MAILTEA_API_BASE_URL": "${MAILTEA_API_BASE_URL:-https://api.mailtea.app}"
+        "MAILTEA_API_TOKEN": "${MAILTEA_API_TOKEN}"
       }
     }
   }

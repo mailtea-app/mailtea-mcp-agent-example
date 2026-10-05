@@ -75,9 +75,8 @@ Two things worth knowing:
   and SDK examples use `MAILTEA_API_KEY`; the MCP server reads
   `MAILTEA_API_TOKEN`. Get it wrong and the server starts fine — every tool
   call just 401s.
-- **Self-hosting or local dev?** Add `MAILTEA_API_BASE_URL` (for example
-  `http://localhost:7787`) to the same `env` block, and
-  `MAILTEA_PUBLICATION_ID` if your key spans several publications.
+- **Key spans several publications?** Add `MAILTEA_PUBLICATION_ID` to the same
+  `env` block to pin the agent to one.
 
 Claude Code can also add it in one command, without a file:
 
