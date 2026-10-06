@@ -89,8 +89,8 @@ environment and `.vscode/mcp.json` prompts for it, so neither stores one.
 
 ## Available tools
 
-The server exposes **162 tools**. This is the full catalog, grouped by family —
-prefix each name with its family, so `send` under `email.*` is `email.send`.
+The server exposes **165 tools**. This is the full catalog, grouped by family.
+Prefix each name with its family, so `send` under `email.*` is `email.send`.
 
 | Family | Tools |
 | --- | --- |
@@ -104,7 +104,7 @@ prefix each name with its family, so `send` under `email.*` is `email.send`.
 | `suppression.*` | `search`, `export`, `add`, `remove` |
 | `template.*` | `create`, `list`, `get`, `update`, `publish`, `unpublish`, `versions`, `restore_version`, `duplicate`, `delete`, `render` |
 | `sender.*` | `list`, `create`, `update`, `set_default`, `delete` |
-| `domain.*` | `create`, `list`, `get`, `verify`, `update`, `delete`, `tracking_create`, `tracking_list`, `tracking_verify`, `tracking_delete` |
+| `domain.*` | `create`, `list`, `get`, `verify`, `update`, `delete`, `claim`, `claim_get`, `claim_verify`, `claim_cancel`, `tracking_create`, `tracking_list`, `tracking_verify`, `tracking_delete` |
 | `publication.*` | `list`, `create`, `domain_list`, `domain_upsert`, `domain_verify`, `domain_set_primary`, `domain_remove`, `domain_traefik_preview` |
 | `automation.*` | `create`, `list`, `get`, `update`, `validate`, `enable`, `disable`, `archive`, `delete`, `versions`, `version`, `metrics` |
 | `automation_run.*` | `list`, `get`, `cancel` |
@@ -116,7 +116,6 @@ prefix each name with its family, so `send` under `email.*` is `email.send`.
 | `site.*` | `get`, `pages_list`, `page_get`, `page_upsert`, `apply_ops`, `footer_templates_list`, `navbar_templates_list`, `section_templates_list`, `design_brief_get`, `design_brief_set`, `publish`, `discard_draft`, `asset_list`, `asset_upload`, `asset_delete` |
 | `section.*` | `list`, `catalog`, `create`, `update`, `remove`, `pack_create`, `pack_update`, `pack_remove`, `pack_revisions`, `pack_restore_revision`, `import_pack` |
 | `monetize.*` | `offer_list`, `offer_upsert`, `offer_remove` |
-| `ai.*` | `generate_draft` |
 
 `npm run tools` prints this list live from your own key, which is the version
 to trust.

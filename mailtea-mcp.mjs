@@ -85,10 +85,11 @@ export async function connectMailteaMcp({
     /**
      * Runs one tool and returns text for a `tool_result` block.
      *
-     * Mailtea reports tool failures as JSON-RPC errors, which the MCP client
-     * throws — so a rejected send arrives here as an exception, not as a result
-     * with `isError`. Both become an errored tool result, because the model
-     * fixing its own arguments on the next turn is the whole point.
+     * Mailtea reports a failed tool (a rejected send, a bad argument) as a
+     * result with `isError`, its reason in the first text block. A protocol
+     * failure, such as an unknown tool, still makes the MCP client throw.
+     * Both become an errored tool result, because the model fixing its own
+     * arguments on the next turn is the whole point.
      */
     async callTool(modelName, input) {
       const name = mcpNameByModelName.get(modelName);
@@ -96,17 +97,22 @@ export async function connectMailteaMcp({
 
       try {
         const result = await client.callTool({ name, arguments: input ?? {} });
-        const text = (result.content ?? [])
+        const blocks = (result.content ?? [])
           .filter((block) => block.type === "text")
-          .map((block) => block.text)
-          .join("\n");
+          .map((block) => block.text);
+        // The server already sends the data as a JSON text block beside
+        // structuredContent, except for very large data and older servers, so
+        // the structured copy is added only when the text lacks it.
         const structured = result.structuredContent
           ? JSON.stringify(result.structuredContent)
           : "";
+        const text = [...blocks, ...(structured && !blocks.includes(structured) ? [structured] : [])]
+          .filter(Boolean)
+          .join("\n");
 
         return {
           isError: Boolean(result.isError),
-          text: [text, structured].filter(Boolean).join("\n") || "(no output)"
+          text: text || "(no output)"
         };
       } catch (error) {
         // Never return an empty string: a `tool_result` with no content is
